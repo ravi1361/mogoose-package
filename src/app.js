@@ -18,7 +18,11 @@ app.post("/notes", async(req,res) => {
 })
 
 app.get('/notes', async(req,res) => {
-  const notes = await noteModel.find()
+
+  // findOne ,finds only one object, if not matches it gives null
+  const notes = await noteModel.findOne({
+    title:"test_title"
+  })
   res.status(200).json({
     message:"Notes fetched successfully",
     notes:notes
